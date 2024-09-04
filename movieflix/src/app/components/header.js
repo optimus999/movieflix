@@ -10,7 +10,7 @@ const header = () => {
     <header className={styles.main_header}>
         <div className={styles.navbar_brand}>
             <Link href='/'>
-            <Image src='/logo.png' alt='my logo ' width={150} height={40}/>
+            <Image src='/logo.png' alt='my logo ' width={170} height={100}/>
             </Link>
         </div>
         <Nav/>

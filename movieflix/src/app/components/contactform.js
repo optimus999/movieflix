@@ -2,6 +2,11 @@
 import styles from '../contact/contact.module.css'
 import {Mulish} from "next/font/google";
 import {useState} from "react";
+import { useSession} from "next-auth/react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const mulish = Mulish({
     subsets: ['latin'],
     display: 'swap',
@@ -9,6 +14,10 @@ const mulish = Mulish({
 })
 
 const contactform = () => {
+    const notify = () => toast.warn("Sign In first", {
+        position: "top-right",});
+
+    const { data: session } = useSession();
     const [user, setuser] = useState({
         username: "",
         email: "",
@@ -21,6 +30,11 @@ const contactform = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if(!session)
+        {
+            notify();
+            return;
+        }
 
         try {
             const response = await fetch('/api/contact', {
@@ -33,6 +47,7 @@ const contactform = () => {
                     message:user.message
                 })
             })
+            console.log(response);
             // Set the status based on the response from the API route
             if (response.status === 200) {
                 setuser({
@@ -122,6 +137,18 @@ const contactform = () => {
                 <button type="submit" className={mulish.className}>Send Message</button>
             </div>
         </form>
+        {/* <button onClick={notify}>Notify!</button> */}
+        <ToastContainer position="top-right"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover={true}
+theme="dark"
+ />
     </>
   )
 }

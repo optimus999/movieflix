@@ -2,7 +2,9 @@ import ContactCard from "../components/contactcard"
 import styles from '../contact/contact.module.css'
 import ContactForm from '../components/contactform'
 
+
 const page = () => {
+  
     return (
       <>
       <div className={styles.container}>

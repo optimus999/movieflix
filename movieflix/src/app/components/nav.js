@@ -13,7 +13,7 @@ const Nav = () => {
                 <div className={openMenu ? `${styles.active}` : "" }>
                     <ul className={styles.navbarList}>
                         <li className={styles.navbarItem}>
-                            <Link className={styles.navbarLink} href="#"
+                            <Link className={styles.navbarLink} href="/"
                                   onClick={() => setOpenMenu(false)}
                             >Home</Link>
                         </li>
@@ -31,6 +31,16 @@ const Nav = () => {
                             <Link className={styles.navbarLink}
                                   onClick={() => setOpenMenu(false)}
                                   href="/contact">Contact</Link>
+                        </li>
+                        <li className={styles.navbarItem}>
+                            <Link className={styles.navbarLink}
+                                  onClick={() => setOpenMenu(false)}
+                                  href="/signin">Sign In</Link>
+                        </li>
+                        <li className={styles.navbarItem}>
+                            <Link className={styles.navbarLink}
+                                  onClick={() => setOpenMenu(false)}
+                                  href="/profile">Profile</Link>
                         </li>
                     </ul>
 
